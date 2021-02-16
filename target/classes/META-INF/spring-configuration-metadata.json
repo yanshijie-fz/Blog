@@ -1,0 +1,28 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.shijie.config.DruidConfig",
+      "sourceMethod": "druidDataSource()"
+    },
+    {
+      "name": "system",
+      "type": "com.shijie.config.EditorConfig",
+      "sourceType": "com.shijie.config.EditorConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "system.file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.shijie.config.EditorConfig"
+    },
+    {
+      "name": "system.url-path",
+      "type": "java.lang.String",
+      "sourceType": "com.shijie.config.EditorConfig"
+    }
+  ],
+  "hints": []
+}

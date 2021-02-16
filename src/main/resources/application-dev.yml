@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: yanshijie
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&cgaracterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  thymeleaf:
+    cache: false
+
+shiro:
+  loginUrl: /login
+
+mybatis:
+  type-aliases-package: com.shijie.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+System:
+  SystemPath: "D:\\community\\upload\\"
+  UrlPath: http://localhost:8080/img/upload/
+
+
+
+

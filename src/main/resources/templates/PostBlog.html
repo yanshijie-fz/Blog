@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link th:href="@{/blog/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+    <link th:href="@{/blog/css/style.css}" rel='stylesheet' type='text/css' />
+    <script th:src="@{/blog/js/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{/blog/js/bootstrap.min.js}"></script>
+
+    <!--Editor-->
+    <link rel="stylesheet" th:href="@{/blog/js/Editor/style.css}" />
+    <link rel="stylesheet" th:href="@{/blog/js/Editor/editormd.min.css}" />
+</head>
+<body>
+<div class="header" id="ban">
+    <div class="container">
+        <div class="head-left">
+            <div class="header-search">
+                <div class="search">
+                    <input class="search_box" type="checkbox" id="search_box">
+                    <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+                    <div class="search_form">
+                        <form action="#" method="post">
+                            <input type="text" name="Search" placeholder="Search...">
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_right">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <nav class="link-effect-7" id="link-effect-7">
+                        <ul class="nav navbar-nav">
+                            <li><a th:href="@{/index}">首页</a></li>
+                            <!--<li><a href="about.html">About</a></li>
+                            <li><a href="features.html">Features</a></li>-->
+                            <li class="active act"><a th:href="@{/travel/1}">博客</a></li>
+                            <!--li><a href="fashion.html">Fashion</a></li>
+                            <li><a href="music.html">Music</a></li>
+                            <li><a href="codes.html">Codes</a></li>-->
+                            <li><a th:href="@{/contact}">联系作者</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="link-effect-7">
+            <ul class="nav navbar-nav">
+                <li th:if="${session.loginUser==null}">
+                    <a class="item" th:href="@{/toLogin}">
+                        <i class="address card icon"></i> 登录
+                    </a>
+                </li>
+                <li>
+                    <a class="item" th:href="@{/user}" th:if="${session.loginUser!=null}">
+                        <i class="home card icon"></i>
+                        <span th:text="${session.loginUser.user_name}"></span>
+                        <!--<span sec:authentication="principal.getAuthorities()"></span>-->
+                    </a>
+                </li>
+                <li>
+                    <a class="item" th:href="@{/logout}" th:if="${session.loginUser!=null}">
+                        <i class="sign-out icon"></i> 注销
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!--start-main-->
+<div class="header-bottom">
+    <div class="container">
+        <div class="logo">
+            <h1><a th:href="@{/index}">STYLE BLOG</a></h1>
+            <p><label class="of"></label>LET'S MAKE A PERFECT STYLE<label class="on"></label></p>
+        </div>
+    </div>
+</div>
+<!-- banner -->
+
+<div class="banner-1">
+
+</div>
+
+<!-- technology-left -->
+<div class="technology">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="agileinfo">
+                <form action="/addEditor" method="post">
+                    <div id="layout">
+                        <header>
+                            <h1>发布博客</h1>
+                            <div class="input-group" style="width: 100%">
+                                <input type="text" class="form-control" placeholder="文章标题" id="contentTitle" name="contentTitle" required>
+                            </div>
+                            <br>
+                            <div class="input-group" style="width: 100%">
+                                <input type="text" class="form-control" placeholder="文章描述" id="contentDesc" name="contentDesc" required>
+                            </div>
+                        </header>
+                        <div id="test-editormd">
+                            <textarea style="display:none;" id="textContent" name="textContent" required></textarea>
+                            <textarea id="text" class="editormd-html-textarea" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <input type="hidden" id="user_id" th:value="${session.loginUser.user_id}">
+                        <input type="submit" class="btn btn-success" value="提交">
+                        <a th:href="@{/travel/1}" class="btn btn-primary">返回</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- technology-right -->
+        <div class="col-md-3 technology-right">
+            <div class="blo-top1">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- technology-right -->
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div>
+    </div>
+    <script th:src="@{/blog/js/jquery.min.js}"></script>
+    <script th:src="@{/blog/js/Editor/editormd.js}"></script>
+    <script type="text/javascript">
+        var testEditor;
+
+        $(function() {
+            testEditor = editormd("test-editormd", {
+                width: "90%",
+                height: 640,
+                syncScrolling: "single",
+                path: "/editor/lib/",
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "/upload",
+                saveHTMLToTextarea: true
+            });
+        });
+    </script>
+</body>
+</html>

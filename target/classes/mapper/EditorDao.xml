@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shijie.dao.EditorDao">
+
+    <select id="queryAllEditor" resultType="com.shijie.pojo.Editor">
+        select id,contentTitle,contentDesc,content,textContent,createTime,modifyTime,user_id,user_name
+        from editor
+    </select>
+
+    <select id="queryEditorByID" parameterType="int" resultType="com.shijie.pojo.Editor">
+        select id,contentTitle,contentDesc,content,textContent,createTime,modifyTime,user_id,user_name
+        from editor
+        where id=#{id}
+    </select>
+
+    <update id="modifyEditor">
+        update editor set contentTitle=#{contentTitle}, contentDesc=#{contentDesc}, content=#{content},textContent=#{textContent},modifyTime=#{modifyTime}
+        where id=#{id}
+    </update>
+
+    <insert id="addEditor" parameterType="com.shijie.pojo.Editor">
+        insert into editor(contentTitle,contentDesc,content,textContent,createTime,modifyTime,user_id,user_name)
+        values (#{contentTitle},#{contentDesc},#{content},#{textContent},#{createTime},#{modifyTime},#{user_id},#{user_name})
+    </insert>
+
+    <delete id="delEditorByID" parameterType="int">
+        delete from editor where id=#{id}
+    </delete>
+
+    <select id="queryEditorByName" resultType="com.shijie.pojo.Editor">
+        select id,contentTitle,contentDesc,content,textContent,createTime,modifyTime,user_id,user_name
+        from editor
+        where contentTitle like concat('%',#{Name},'%')
+    </select>
+</mapper>
